@@ -2,14 +2,24 @@
   "name": "<%= project.name %>",
   "version": "0.0.1",
   "description": "<%- project.description %>",
+<% if (options.isYeomanGenerator) { -%>
+  "keywords": [
+    "yeoman-generator"
+  ],
+<% } else { -%>
   "keywords": [],
+<% } -%>
   "author": {
     "name": "<%= project.author.name %>",
     "url": "https://github.com/<%= options.githubUsername %>"
   },
   "license": "MIT",
   "homepage": "https://github.com/<%= options.githubUsername %>/<%= project.name %>",
+<% if (options.isYeomanGenerator) { -%>
+  "main": "generators/app/index.js",
+<% } else { -%>
   "main": "lib/index.js",
+<% } -%>
   "scripts": {
 <% if (options.env.browser) { -%>
     "build": "jshint . --verbose && jscs . --verbose && npm run browserify",
@@ -58,12 +68,14 @@
     "coveralls": "^2.11.2",
     "istanbul": "^0.3.13",
 <% } -%>
+<% if (options.tests) { -%>
+    "mocha": "^2.2.4",
     "chai": "^2.3.0",
+    "sinon": "^1.14.1",
+<% } -%>
     "jscs": "^1.13.1",
     "jshint": "^2.7.0",
-    "mocha": "^2.2.4",
     "npm-check-updates": "^1.5.1",
-    "sinon": "^1.14.1",
     "version-bump-prompt": "^1.1.0"
   },
   "dependencies": {}
