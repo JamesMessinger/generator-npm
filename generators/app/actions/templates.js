@@ -10,7 +10,7 @@ module.exports = {
    * Copies template files to the project, unless they already exist
    */
   create: function() {
-    createTemplate.call(this, '.gitignore');
+    createTemplate.call(this, 'gitignore', '.gitignore');
     createTemplate.call(this, '.jshintignore');
     createTemplate.call(this, '.npmignore');
     createTemplate.call(this, 'LICENSE');
@@ -38,7 +38,7 @@ module.exports = {
    * Copies template files to the project, overwriting any existing files
    */
   overwrite: function() {
-    overwriteTemplate.call(this, '.gitattributes');
+    overwriteTemplate.call(this, 'gitattributes', '.gitattributes');
     overwriteTemplate.call(this, '.editorconfig');
 
     if (this.options.tests) {
@@ -86,10 +86,11 @@ function createTemplate(filename, destFilename) {
  * If the file already exists in the project, then it is overwritten.
  *
  * @param {string} filename - The template file name
+ * @param {string} [destFilename] - The destination filename. Defaults to the same as `filename`.
  */
-function overwriteTemplate(filename) {
+function overwriteTemplate(filename, destFilename) {
   var src = this.templatePath(filename);
-  var dest = this.destinationPath(filename);
+  var dest = this.destinationPath(destFilename || filename);
   this.fs.copyTpl(src, dest, this);
 }
 
