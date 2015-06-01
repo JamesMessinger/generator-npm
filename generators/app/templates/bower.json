@@ -1,0 +1,28 @@
+{
+  "name": "<%= project.name %>",
+  "version": "0.0.1",
+  "description": "<%= project.description %>",
+  "keywords": [],
+  "authors": [
+    {
+      "name": "<%= project.author.name %>",
+      "homepage": "https://github.com/<%= options.githubUsername %>"
+    }
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/<%= options.githubUsername %>/<%= project.name %>",
+  "main": "dist/<%= project.name %>.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/<%= options.githubUsername %>/<%= project.name %>.git"
+  },
+  "ignore": [
+    "/bower_components",
+<% if (options.tests) { -%>
+    "/tests",
+<% } -%>
+    "/lib",
+    "/.*"
+  ],
+  "dependencies": {}
+}

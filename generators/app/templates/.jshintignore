@@ -1,0 +1,10 @@
+<% if (options.env.node && options.tests) { -%>
+/coverage
+<% } -%>
+<% if (options.env.browser) { -%>
+/dist
+<% } -%>
+/node_modules
+<% if (options.tests) { -%>
+/tests
+<% } -%>

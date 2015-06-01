@@ -1,0 +1,12 @@
+**/*~
+**/._*
+**/.DS_Store
+npm-debug.log
+/.idea
+<% if (options.env.browser) { -%>
+/bower_components
+<% } -%>
+<% if (options.env.node && options.tests) { -%>
+/coverage
+<% } -%>
+/node_modules

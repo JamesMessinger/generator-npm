@@ -1,0 +1,70 @@
+{
+  "name": "<%= project.name %>",
+  "version": "0.0.1",
+  "description": "<%- project.description %>",
+  "keywords": [],
+  "author": {
+    "name": "<%= project.author.name %>",
+    "url": "https://github.com/<%= options.githubUsername %>"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/<%= options.githubUsername %>/<%= project.name %>",
+  "main": "lib/index.js",
+  "scripts": {
+<% if (options.env.browser) { -%>
+    "build": "jshint . --verbose && jscs . --verbose && npm run browserify",
+    "browserify": "browserify . --standalone <%= project.camelCaseName %> -o dist/<%= project.name %>.js && browserify -g uglifyify . --standalone <%= project.camelCaseName %> -o dist/<%= project.name %>.min.js",
+<% } else { -%>
+    "build": "jshint . --verbose && jscs . --verbose",
+<% } -%>
+<% if (options.tests) { -%>
+<% if (options.env.node && options.env.browser) { -%>
+    "test": "istanbul cover _mocha -- --recursive tests && npm run karma",
+    "mocha": "mocha --recursive tests",
+    "karma": "karma start --single-run",
+<% } else if (options.env.node) { -%>
+    "test": "istanbul cover _mocha -- --recursive tests",
+    "mocha": "mocha --recursive tests",
+<% } else if (options.env.browser) { -%>
+    "test": "karma start --single-run",
+<% } -%>
+<% } -%>
+    "update-deps": "npm-check-updates -u && npm update",
+    "release": "npm run update-deps && npm run build && npm test && bump --prompt --tag --push --all && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/<%= options.githubUsername %>/<%= project.name %>.git"
+  },
+  "devDependencies": {
+<% if (options.env.browser) { -%>
+    "browserify": "^10.1.3",
+    "uglifyify": "^3.0.1",
+<% if (options.tests) { -%>
+    "karma": "^0.12.31",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.1.8",
+    "karma-cli": "0.0.4",
+    "karma-firefox-launcher": "^0.1.4",
+    "karma-ie-launcher": "^0.1.5",
+    "karma-mocha": "^0.1.10",
+    "karma-mocha-reporter": "^1.0.2",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-safari-launcher": "^0.1.1",
+    "karma-sinon": "^1.0.4",
+<% } -%>
+<% } -%>
+<% if (options.env.node && options.tests) { -%>
+    "coveralls": "^2.11.2",
+    "istanbul": "^0.3.13",
+<% } -%>
+    "chai": "^2.3.0",
+    "jscs": "^1.13.1",
+    "jshint": "^2.7.0",
+    "mocha": "^2.2.4",
+    "npm-check-updates": "^1.5.1",
+    "sinon": "^1.14.1",
+    "version-bump-prompt": "^1.1.0"
+  },
+  "dependencies": {}
+}

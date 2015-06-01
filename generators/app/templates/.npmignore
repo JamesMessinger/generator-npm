@@ -1,0 +1,7 @@
+<% if (options.env.browser && !options.env.node) { -%>
+/lib
+<% } -%>
+<% if (options.tests) { -%>
+/tests
+<% } -%>
+/.*

@@ -1,0 +1,43 @@
+{
+  "name": "@bigstickcarpet/generator-npm",
+  "version": "1.0.0",
+  "description": "My Yeoman generator for scaffolding npm projects",
+  "keywords": [
+    "yeoman-generator",
+    "npm",
+    "node",
+    "browserify"
+  ],
+  "author": {
+    "name": "James Messinger",
+    "url": "http://jamesmessinger.com"
+  },
+  "license": "MIT",
+  "homepage": "https://bigstickcarpet.github.io/generator-npm",
+  "main": "generators/app/index.js",
+  "scripts": {
+    "build": "jshint . --verbose && jscs . --verbose",
+    "update-deps": "npm-check-updates -u && npm update",
+    "release": "npm run update-deps && npm run build && bump --prompt --tag --push --all && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BigstickCarpet/generator-npm.git"
+  },
+  "files": [
+    "generators"
+  ],
+  "dependencies": {
+    "chalk": "^1.0.0",
+    "lodash": "^3.9.3",
+    "rimraf": "^2.3.4",
+    "yeoman-generator": "^0.20.1",
+    "yosay": "^1.0.4"
+  },
+  "devDependencies": {
+    "jscs": "^1.13.1",
+    "jshint": "^2.7.0",
+    "npm-check-updates": "^1.5.1",
+    "version-bump-prompt": "^1.3.1"
+  }
+}
