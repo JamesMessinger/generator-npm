@@ -121,7 +121,9 @@ module.exports = {
       ],
 
       function(answers) {
-        me.options.isYeomanGenerator = _.isUndefined(me.options.isYeomanGenerator) ? _.startsWith(me.project.name, 'generator-') : me.options.isYeomanGenerator;
+        me.options.isYeomanGenerator = _.isUndefined(me.options.isYeomanGenerator) ?
+          _.startsWith(me.project.name, 'generator-') :
+          me.options.isYeomanGenerator;
         me.options.tests = me.options.tests || !!answers.tests;
         me.options.env.node = me.options.env.node || _.contains(answers.env, 'node');
         me.options.env.browser = me.options.env.browser || _.contains(answers.env, 'browser');

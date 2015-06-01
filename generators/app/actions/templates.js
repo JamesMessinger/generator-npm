@@ -15,7 +15,7 @@ module.exports = {
     createTemplate.call(this, '_npmignore', '.npmignore');
     createTemplate.call(this, 'LICENSE');
     createTemplate.call(this, 'README.md');
-    
+
     if (this.options.isYeomanGenerator) {
       createTemplate.call(this, 'lib/index.js', 'generators/app/index.js');
     }
