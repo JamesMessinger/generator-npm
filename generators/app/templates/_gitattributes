@@ -9,6 +9,7 @@
 *.css text
 *.scss text
 *.min text
+*.map text
 *.js text
 *.json text
 *.config text
@@ -21,11 +22,16 @@
 
 # Declare files that will always have CRLF line endings on checkout.
 *.sln text eol=crlf
+*.csproj text eol=crlf
+*.jsproj text eol=crlf
+*.njsproj text eol=crlf
+*.vbproj text eol=crlf
 
 # Denote all files that are truly binary and should not be modified.
+*.gif binary
 *.png binary
 *.jpg binary
 *.jpeg binary
-
-# Omit specific test files from being modified
-/tests/files/good/text.txt binary
+*.bmp binary
+*.dll binary
+*.exe binary

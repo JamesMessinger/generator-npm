@@ -118,4 +118,4 @@ To build<%= options.tests ? '/test' : '' %> the project locally on your computer
 
 License
 --------------------------
-<%= project.name %> is 100% free and open-source, under the [MIT license](LICENSE). Use it however you want.
+<%= project.friendlyName %> is 100% free and open-source, under the [MIT license](LICENSE). Use it however you want.
