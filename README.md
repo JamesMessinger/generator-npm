@@ -1,5 +1,9 @@
 ![Yeoman logo](http://yeoman.io/assets/img/tool-yo.3dcc.png)
 
+[![Dependencies](https://img.shields.io/david/BigstickCarpet/generator-npm.svg)](https://david-dm.org/BigstickCarpet/generator-npm)
+[![npm](http://img.shields.io/npm/v/@bigstickcarpet/generator-npm.svg)](https://www.npmjs.com/package/@bigstickcarpet/generator-npm)
+[![License](https://img.shields.io/npm/l/@bigstickcarpet/generator-npm.svg)](LICENSE)
+
 > This is my [Yeoman](http://yeoman.io/) generator for scaffolding npm projects. It's pretty tailored to my personal tastes, but feel free to use it if you want. Maybe our tastes are similar.
 
 
