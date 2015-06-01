@@ -42,6 +42,9 @@ module.exports = {
 
       function(answers) {
         me.project.name = me.project.name || answers.name;
+        me.project.description = me.project.description || answers.description || 'TODO: Add a project description';
+
+        // The project's full name includes the npm scope (if any)
         me.project.fullName = me.project.name;
 
         if (_.contains(me.project.name, '/')) {
@@ -53,8 +56,11 @@ module.exports = {
         me.project.friendlyName = _.startCase(me.project.name);
         me.project.camelCaseName = _.camelCase(me.project.name);
 
-        me.project.description = me.project.description || answers.description || 'TODO: Add a project description';
+        // Get the project's author
         me.project.author = me.project.author || {};
+        if (_.isString(me.project.author)) {
+          me.project.author = {name: me.project.author};
+        }
         me.project.author.name = me.project.author.name || answers.authorName || 'John Doe';
 
         done();
@@ -99,7 +105,7 @@ module.exports = {
           name: 'env',
           type: 'checkbox',
           message: 'Where will this project run?:',
-          when: !(this.options.env.node || this.options.env.browser),
+          when: _.isUndefined(this.options.env.node),
           choices: [
             {name: 'Node.js', value: 'node', checked: true},
             {name: 'Web browsers', value: 'browser'}
@@ -110,14 +116,15 @@ module.exports = {
           type: 'confirm',
           message: 'Unit tests?:',
           default: true,
-          when: !this.options.tests
+          when: _.isUndefined(this.options.tests)
         }
       ],
 
       function(answers) {
+        me.options.isYeomanGenerator = _.isUndefined(me.options.isYeomanGenerator) ? _.startsWith(me.project.name, 'generator-') : me.options.isYeomanGenerator;
+        me.options.tests = me.options.tests || !!answers.tests;
         me.options.env.node = me.options.env.node || _.contains(answers.env, 'node');
         me.options.env.browser = me.options.env.browser || _.contains(answers.env, 'browser');
-        me.options.tests = me.options.tests || answers.tests;
         me.config.set(me.options);
         done();
       });

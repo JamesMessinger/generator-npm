@@ -15,12 +15,17 @@ module.exports = {
     createTemplate.call(this, '_npmignore', '.npmignore');
     createTemplate.call(this, 'LICENSE');
     createTemplate.call(this, 'README.md');
-    createTemplate.call(this, 'lib/index.js');
+    
+    if (this.options.isYeomanGenerator) {
+      createTemplate.call(this, 'lib/index.js', 'generators/app/index.js');
+    }
+    else {
+      createTemplate.call(this, 'lib/index.js');
+    }
 
-    if (this.options.tests) {
-      if (!fs.existsSync(this.destinationPath('tests'))) {
-        createTemplate.call(this, 'tests/index.spec.js');
-      }
+    if (this.options.tests && !fs.existsSync(this.destinationPath('tests'))) {
+      createTemplate.call(this, 'tests/index.spec.js');
+      createTemplate.call(this, '.codeclimate.yml');
 
       if (this.options.env.browser) {
         createTemplate.call(this, 'karma.conf.js');
