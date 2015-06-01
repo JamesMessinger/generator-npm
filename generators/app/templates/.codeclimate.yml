@@ -1,0 +1,16 @@
+languages:
+  JavaScript: true
+exclude_paths:
+<% if (options.env.browser) { -%>
+- "dist/*"
+<% } -%>
+- "node_modules/*"
+<% if (options.tests) { -%>
+- "tests/*"
+<% if (options.env.node) { -%>
+- "coverage/*"
+<% } -%>
+<% if (options.env.browser) { -%>
+- "karma.conf.js"
+<% } -%>
+<% } -%>
