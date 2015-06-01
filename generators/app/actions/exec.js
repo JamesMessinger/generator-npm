@@ -1,7 +1,5 @@
 'use strict';
 
-var _ = require('lodash');
-
 module.exports = {
   /**
    * Installs npm-check-updates, which is the only prerequisite needed to run {@link updateDependencies}.

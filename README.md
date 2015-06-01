@@ -22,7 +22,7 @@ Install the generator using [npm](https://docs.npmjs.com/getting-started/what-is
 npm install -g @bigstickcarpet/generator-npm
 ```
 
-__NOTE__: It's important that you install globally (using the __-g__ flag).  If you get any permissions errors, you can fix them by [granting yourself access to the npm directories](https://docs.npmjs.com/getting-started/fixing-npm-permissions).  Using __sudo__ or an administrator account as a workaround is __not__ recommended.
+__NOTE__: Yeoman generators _must_ be installed globally (using the __-g__ flag).  If you get any permissions errors, you can fix them by [granting yourself access to the npm directories](https://docs.npmjs.com/getting-started/fixing-npm-permissions).  Using __sudo__ or an administrator account as a workaround is __not__ recommended.
 
 
 Getting Started
