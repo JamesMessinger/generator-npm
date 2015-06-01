@@ -19,10 +19,13 @@
     <script src="../dist/<%= project.name %>.js"></script>
 
     <!-- Unit Tests -->
+<% if (options.env.node) { -%>
     <script src="helper.js"></script>
+<% } -%>
     <script src="index.spec.js"></script>
 
     <script>
+      expect = chai.expect;
       mocha.checkLeaks();
       mocha.globals([]);
       mocha.run();

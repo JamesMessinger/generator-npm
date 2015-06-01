@@ -104,7 +104,7 @@ module.exports = {
         {
           name: 'env',
           type: 'checkbox',
-          message: 'Where will this project run?:',
+          message: 'Where will this code run?:',
           when: _.isUndefined(this.options.env.node),
           choices: [
             {name: 'Node.js', value: 'node', checked: true},
@@ -112,21 +112,34 @@ module.exports = {
           ]
         },
         {
+          name: 'yeoman',
+          type: 'confirm',
+          message: 'Is this a Yeoman generator?:',
+          default: _.startsWith(this.project.name, 'generator-'),
+          when: function(answers) {return _.contains(answers.env, 'node');}
+        },
+        {
+          name: 'cordova',
+          type: 'confirm',
+          message: 'Is this a Cordova app?:',
+          default: false,
+          when: function(answers) {return _.contains(answers.env, 'browser');}
+        },
+        {
           name: 'tests',
           type: 'confirm',
-          message: 'Unit tests?:',
+          message: 'Do you want unit tests?:',
           default: true,
           when: _.isUndefined(this.options.tests)
         }
       ],
 
       function(answers) {
-        me.options.isYeomanGenerator = _.isUndefined(me.options.isYeomanGenerator) ?
-          _.startsWith(me.project.name, 'generator-') :
-          me.options.isYeomanGenerator;
-        me.options.tests = me.options.tests || !!answers.tests;
         me.options.env.node = me.options.env.node || _.contains(answers.env, 'node');
         me.options.env.browser = me.options.env.browser || _.contains(answers.env, 'browser');
+        me.options.env.yeoman = me.options.env.yeoman || !!answers.yeoman;
+        me.options.env.cordova = me.options.env.cordova || !!answers.cordova;
+        me.options.tests = me.options.tests || !!answers.tests;
         me.config.set(me.options);
         done();
       });

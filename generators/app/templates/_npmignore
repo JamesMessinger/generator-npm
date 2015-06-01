@@ -1,4 +1,4 @@
-<% if (options.env.browser && !options.env.node) { -%>
+<% if (options.env.browser && !options.env.node && !options.env.cordova) { -%>
 /lib
 <% } -%>
 <% if (options.tests) { -%>

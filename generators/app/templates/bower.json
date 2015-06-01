@@ -2,7 +2,13 @@
   "name": "<%= project.name %>",
   "version": "0.0.1",
   "description": "<%= project.description %>",
+<% if (options.env.cordova) { -%>
+  "keywords": [
+    "cordova"
+  ],
+<% } else { -%>
   "keywords": [],
+<% } -%>
   "authors": [
     {
       "name": "<%= project.author.name %>",
@@ -11,11 +17,16 @@
   ],
   "license": "MIT",
   "homepage": "https://github.com/<%= options.githubUsername %>/<%= project.name %>",
+<% if (options.env.cordova) { -%>
+  "main": "www/index.html",
+<% } else { -%>
   "main": "dist/<%= project.name %>.js",
+<% } -%>
   "repository": {
     "type": "git",
     "url": "https://github.com/<%= options.githubUsername %>/<%= project.name %>.git"
   },
+<% if (!options.env.cordova) { -%>
   "ignore": [
     "/bower_components",
 <% if (options.tests) { -%>
@@ -24,5 +35,6 @@
     "/lib",
     "/.*"
   ],
+<% } -%>
   "dependencies": {}
 }

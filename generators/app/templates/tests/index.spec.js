@@ -1,10 +1,11 @@
 'use strict';
+
 <% if (options.env.node && !options.env.browser) { -%>
 var <%= project.camelCaseName %> = require('../'),
     expect = require('chai').expect,
     sinon  = require('sinon');
-<% } -%>
 
+<% } -%>
 describe('<%= project.name %>', function() {
   it('should export the `sayHello` function', function() {
     expect(<%= project.camelCaseName %>.sayHello).to.be.a('function');

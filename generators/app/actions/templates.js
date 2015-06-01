@@ -16,25 +16,31 @@ module.exports = {
     createTemplate.call(this, 'LICENSE');
     createTemplate.call(this, 'README.md');
 
-    if (this.options.isYeomanGenerator) {
+    if (this.options.env.yeoman) {
       createTemplate.call(this, 'lib/index.js', 'generators/app/index.js');
     }
-    else {
+    else if (!this.options.env.cordova) {
       createTemplate.call(this, 'lib/index.js');
     }
 
     if (this.options.tests && !fs.existsSync(this.destinationPath('tests'))) {
       createTemplate.call(this, 'tests/index.spec.js');
-      createTemplate.call(this, '.codeclimate.yml');
+
+      if (!this.options.env.cordova) {
+        createTemplate.call(this, '.codeclimate.yml');
+      }
 
       if (this.options.env.browser) {
         createTemplate.call(this, 'karma.conf.js');
-        createTemplate.call(this, 'tests/helper.js');
         createTemplate.call(this, 'tests/index.html');
+
+        if (this.options.env.node) {
+          createTemplate.call(this, 'tests/helper.js');
+        }
       }
     }
 
-    if (this.options.env.browser) {
+    if (this.options.env.browser && !this.options.env.cordova) {
       createTemplate.call(this, 'dist/project-name.js', 'dist/' + this.project.name + '.js');
     }
   },
@@ -47,7 +53,9 @@ module.exports = {
     overwriteTemplate.call(this, '.editorconfig');
 
     if (this.options.tests) {
-      overwriteTemplate.call(this, '.travis.yml');
+      if (!this.options.env.cordova) {
+        overwriteTemplate.call(this, '.travis.yml');
+      }
     }
   },
 

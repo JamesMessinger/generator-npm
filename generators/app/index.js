@@ -14,12 +14,13 @@ module.exports = yeoman.Base.extend({
 
     // Default options
     this.options = this.config.defaults({
-      isYeomanGenerator: undefined, // boolean
       githubUsername: undefined,    // string
       tests: undefined,             // boolean
       env: {
         node: undefined,            // boolean
-        browser: undefined          // boolean
+        browser: undefined,         // boolean
+        yeoman: undefined,          // boolean
+        cordova: undefined          // boolean
       }
     });
   },

@@ -1,7 +1,7 @@
 <% if (options.env.node && options.tests) { -%>
 /coverage
 <% } -%>
-<% if (options.env.browser) { -%>
+<% if (options.env.browser && !options.env.cordova) { -%>
 /dist
 <% } -%>
 /node_modules
