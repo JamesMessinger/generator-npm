@@ -10,9 +10,9 @@ module.exports = {
    * Copies template files to the project, unless they already exist
    */
   create: function() {
-    createTemplate.call(this, 'gitignore', '.gitignore');
+    createTemplate.call(this, '_gitignore', '.gitignore');
     createTemplate.call(this, '.jshintignore');
-    createTemplate.call(this, '.npmignore');
+    createTemplate.call(this, '_npmignore', '.npmignore');
     createTemplate.call(this, 'LICENSE');
     createTemplate.call(this, 'README.md');
     createTemplate.call(this, 'lib/index.js');
@@ -38,7 +38,7 @@ module.exports = {
    * Copies template files to the project, overwriting any existing files
    */
   overwrite: function() {
-    overwriteTemplate.call(this, 'gitattributes', '.gitattributes');
+    overwriteTemplate.call(this, '_gitattributes', '.gitattributes');
     overwriteTemplate.call(this, '.editorconfig');
 
     if (this.options.tests) {
