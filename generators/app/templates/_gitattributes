@@ -1,3 +1,6 @@
+# Specifies how Git should treat certain file types
+# https://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes
+
 # Convert all line endings to CRLF, so they work with Windows programs
 * text=auto
 

@@ -1,5 +1,7 @@
 'use strict';
 
+// Karma config
+// https://karma-runner.github.io/0.12/config/configuration-file.html
 module.exports = function(config) {
   var isMac      = /^darwin/.test(process.platform),
       isWindows  = /^win/.test(process.platform),

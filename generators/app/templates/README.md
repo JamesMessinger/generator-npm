@@ -1,6 +1,6 @@
 <%= project.friendlyName %>
 ============================
-#### <%- project.description %>
+#### <%= project.description %>
 
 <% if (options.tests) { -%>
 [![Build Status](https://img.shields.io/travis/<%= options.githubUsername %>/<%= project.name %>.svg)](https://travis-ci.org/<%= options.githubUsername %>/<%= project.name %>)
