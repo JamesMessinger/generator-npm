@@ -28,8 +28,11 @@
 <% } -%>
   "scripts": {
 <% if (options.env.browser && !options.env.cordova) { -%>
-    "build": "jshint . --verbose && jscs . --verbose && npm run browserify",
-    "browserify": "browserify . --standalone <%= project.camelCaseName %> -o dist/<%= project.name %>.js && browserify -g uglifyify . --standalone <%= project.camelCaseName %> -o dist/<%= project.name %>.min.js",
+    "build": "npm run lint && npm run browserify && npm run browserify-min",
+    "lint": "jshint . --verbose && jscs . --verbose",
+    "browserify": "browserify lib/index.js --standalone <%= project.camelCaseName %> --debug | exorcist dist/<%= project.name %>.js.map --base dist > dist/<%= project.name %>.js",
+    "browserify-min": "browserify -g uglifyify lib/index.js --standalone <%= project.camelCaseName %> -o dist/<%= project.name %>.min.js",
+    "browserify-cover": "browserify -g browserify-istanbul lib/index.js --standalone <%= project.camelCaseName %> -o dist/<%= project.name %>.cover.js",
 <% } else { -%>
     "build": "jshint . --verbose && jscs . --verbose",
 <% } -%>
@@ -37,12 +40,12 @@
 <% if (options.env.node && options.env.browser) { -%>
     "test": "istanbul cover _mocha -- --recursive tests && npm run karma",
     "mocha": "mocha --recursive tests",
-    "karma": "karma start --single-run",
+    "karma": "npm run browserify-cover && karma start --single-run",
 <% } else if (options.env.node) { -%>
     "test": "istanbul cover _mocha -- --recursive tests",
     "mocha": "mocha --recursive tests",
 <% } else if (options.env.browser) { -%>
-    "test": "karma start --single-run",
+    "test": "npm run browserify-cover && karma start --single-run",
 <% } -%>
 <% } -%>
     "update-deps": "npm-check-updates -u && npm update",
@@ -56,13 +59,16 @@
 <% if (options.env.browser) { -%>
 <% if (!options.env.cordova) { -%>
     "browserify": "^10.1.3",
+    "exorcist": "^0.4.0",
     "uglifyify": "^3.0.1",
 <% } -%>
 <% if (options.tests) { -%>
+    "browserify-istanbul": "^0.2.1",
     "karma": "^0.12.31",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.1.8",
     "karma-cli": "0.0.4",
+    "karma-coverage": "^0.2.6",
     "karma-firefox-launcher": "^0.1.4",
     "karma-ie-launcher": "^0.1.5",
     "karma-mocha": "^0.1.10",
@@ -73,10 +79,10 @@
 <% } -%>
 <% } -%>
 <% if (options.env.node && options.tests) { -%>
-    "coveralls": "^2.11.2",
     "istanbul": "^0.3.13",
 <% } -%>
 <% if (options.tests) { -%>
+    "coveralls": "^2.11.2",
     "mocha": "^2.2.4",
     "chai": "^2.3.0",
     "sinon": "^1.14.1",

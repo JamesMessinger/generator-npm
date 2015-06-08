@@ -105,7 +105,7 @@ To build<%= options.tests ? '/test' : '' %> the project locally on your computer
 4. __Run the unit tests__<br>
 <% if (options.env.node && options.env.browser) { -%>
 `npm run mocha` (test in Node)<br>
-`npm run karma` (test in web browsers)<br>
+`npm run karma` (test in web browsers + code coverage)<br>
 `npm test` (test in Node and browsers + code coverage)
 <% } else if (options.env.node) { -%>
 `npm run mocha` (just the tests)<br>

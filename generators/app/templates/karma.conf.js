@@ -10,11 +10,11 @@ module.exports = function(config) {
 
   config.set({
     frameworks: ['mocha', 'chai', 'sinon'],
-    reporters: ['mocha'],
+    reporters: ['mocha', 'coverage'],
 
     files: [
       // <%= project.name %>
-      'dist/<%= project.name %>.min.js',
+      'dist/<%= project.name %>.cover.js',
 
       // Unit tests
       'tests/helper.js',
@@ -35,6 +35,13 @@ module.exports = function(config) {
       else if (isLinux) {
         return ['PhantomJS', 'Firefox', 'Chrome'];
       }
-    })()
+    })(),
+
+    coverageReporter: {
+      reporters: [
+        {type: 'lcov'},
+        {type: 'text-summary'}
+      ]
+    }
   });
 };

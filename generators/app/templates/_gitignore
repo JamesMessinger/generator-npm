@@ -12,4 +12,7 @@ npm-debug.log
 <% if (options.env.node && options.tests) { -%>
 /coverage
 <% } -%>
+<% if (options.env.browser && options.tests) { -%>
+/dist/<%= project.name %>.cover.js
+<% } -%>
 /node_modules
