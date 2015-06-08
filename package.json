@@ -1,6 +1,6 @@
 {
   "name": "@bigstickcarpet/generator-npm",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "My Yeoman generator for scaffolding npm projects",
   "keywords": [
     "yeoman-generator",
@@ -30,7 +30,7 @@
   "dependencies": {
     "chalk": "^1.0.0",
     "lodash": "^3.9.3",
-    "rimraf": "^2.3.4",
+    "rimraf": "^2.4.0",
     "yeoman-generator": "^0.20.1",
     "yosay": "^1.0.4"
   },
