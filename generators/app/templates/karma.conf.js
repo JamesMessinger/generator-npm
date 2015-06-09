@@ -39,8 +39,8 @@ module.exports = function(config) {
 
     coverageReporter: {
       reporters: [
-        {type: 'lcov'},
-        {type: 'text-summary'}
+        {type: 'lcov', subdir: '<%= options.env.node ? 'karma' : '.' %>'},
+        {type: 'text-summary', subdir: '<%= options.env.node ? 'karma' : '.' %>'}
       ]
     }
   });
