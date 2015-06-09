@@ -49,7 +49,7 @@
 <% } -%>
 <% } -%>
     "update-deps": "npm-check-updates -u && npm update",
-    "publish": "npm run update-deps && npm run build && npm test && bump --prompt --tag --push --all && npm publish"
+    "release": "npm run update-deps && npm run build && npm test && bump --prompt --tag --push --all && npm publish"
   },
   "repository": {
     "type": "git",
