@@ -12,7 +12,7 @@ module.exports = {
    * Updates dependencies to their latest versions
    */
   updateDependencies: function() {
-    this.spawnCommandSync('npm', ['run', 'update-deps']);
+    this.spawnCommandSync('npm', ['run', 'upgrade']);
   }
 };
 
