@@ -48,8 +48,8 @@
     "test": "npm run browserify-cover && karma start --single-run",
 <% } -%>
 <% } -%>
-    "update-deps": "npm-check-updates -u && npm update",
-    "release": "npm run update-deps && npm run build && npm test && bump --prompt --tag --push --all && npm publish"
+    "upgrade": "npm-check-updates -u && npm update",
+    "release": "npm run upgrade && npm run build && npm test && bump --prompt --tag --push --all && npm publish"
   },
   "repository": {
     "type": "git",
