@@ -1,5 +1,20 @@
+**/*~
+**/._*
+**/.DS_Store
+npm-debug.log
+/.idea
+<% if (options.env.browser && !options.env.cordova) { -%>
+/bower_components
+<% } -%>
+<% if (options.env.node && options.tests) { -%>
+/coverage
+<% } -%>
+<% if (options.env.browser && options.tests) { -%>
+/dist/<%= project.name %>.cover.js
+<% } -%>
 <% if (options.env.browser && !options.env.node && !options.env.cordova) { -%>
 /lib
+/node_modules
 <% } -%>
 <% if (options.tests) { -%>
 /tests
