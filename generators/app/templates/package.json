@@ -38,12 +38,12 @@
 <% } -%>
 <% if (options.tests) { -%>
 <% if (options.env.node && options.env.browser) { -%>
-    "test": "istanbul cover _mocha -- --recursive tests && npm run karma",
-    "mocha": "mocha --recursive tests",
+    "test": "istanbul cover _mocha -- --bail --recursive tests && npm run karma",
+    "mocha": "mocha --bail --recursive tests",
     "karma": "npm run browserify-cover && karma start --single-run",
 <% } else if (options.env.node) { -%>
-    "test": "istanbul cover _mocha -- --recursive tests",
-    "mocha": "mocha --recursive tests",
+    "test": "istanbul cover _mocha -- --bail --recursive tests",
+    "mocha": "mocha --bail --recursive tests",
 <% } else if (options.env.browser) { -%>
     "test": "npm run browserify-cover && karma start --single-run",
 <% } -%>
