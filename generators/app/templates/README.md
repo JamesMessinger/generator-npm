@@ -99,7 +99,7 @@ I welcome any contributions, enhancements, and bug-fixes.  [File an issue](https
 To build<%= options.tests ? '/test' : '' %> the project locally on your computer:
 
 1. __Clone this repo__<br>
-`git clone https://github.com/<%= options.githubUsername %>/<%= project.name %>.git`
+`git clone https://github.com/<%= options.githubUsername.toLowerCase() %>/<%= project.name %>.git`
 
 2. __Install dependencies__<br>
 `npm install`
