@@ -35,7 +35,10 @@ module.exports = function(config) {
 
     coverageReporter: {
       reporters: [
+        // Show a code-coverage summary in the console
         {type: 'text-summary'},
+
+        // Create a code-coverage report for each browser
         {
           type: 'lcov',
           subdir: function(browser) {
