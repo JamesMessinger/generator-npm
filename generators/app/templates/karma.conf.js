@@ -5,8 +5,7 @@
 module.exports = function(config) {
   var isMac      = /^darwin/.test(process.platform),
       isWindows  = /^win/.test(process.platform),
-      isLinux    = !(isMac || isWindows),
-      isTravisCI = process.env.TRAVIS === 'true';
+      isLinux    = !(isMac || isWindows);
 
   config.set({
     frameworks: ['mocha', 'chai', 'sinon'],
@@ -14,7 +13,7 @@ module.exports = function(config) {
 
     files: [
       // <%= project.name %>
-      'dist/<%= project.name %>.cover.js',
+      'dist/<%= project.name %>.test.js',
 
       // Unit tests
       'tests/helper.js',
@@ -29,9 +28,6 @@ module.exports = function(config) {
       else if (isWindows) {
         return ['PhantomJS', 'Firefox', 'Chrome', 'Safari', 'IE'];
       }
-      else if (isTravisCI) {
-        return ['PhantomJS', 'Firefox'];
-      }
       else if (isLinux) {
         return ['PhantomJS', 'Firefox', 'Chrome'];
       }
@@ -39,8 +35,13 @@ module.exports = function(config) {
 
     coverageReporter: {
       reporters: [
-        {type: 'lcov', subdir: '<%= options.env.node ? 'karma' : '.' %>'},
-        {type: 'text-summary', subdir: '<%= options.env.node ? 'karma' : '.' %>'}
+        {type: 'text-summary'},
+        {
+          type: 'lcov',
+          subdir: function(browser) {
+            return browser.toLowerCase().split(/[ /-]/)[0];
+          }
+        },
       ]
     }
   });

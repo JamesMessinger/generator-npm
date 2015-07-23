@@ -10,7 +10,7 @@ npm-debug.log
 /coverage
 <% } -%>
 <% if (options.env.browser && options.tests) { -%>
-/dist/<%= project.name %>.cover.js
+/dist/*.test.js
 <% } -%>
 <% if (options.env.browser && !options.env.node && !options.env.cordova) { -%>
 /lib

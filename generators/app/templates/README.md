@@ -42,6 +42,12 @@ Install using [bower](http://bower.io/):
 bower install <%= project.name %>
 ```
 
+Then reference [`<%= project.name %>.js`](dist/<%= project.name %>.js) or [`<%= project.name %>.min.js`](dist/<%= project.name %>.min.js) in your HTML:
+
+```html
+<script src="bower_components/<%= project.name %>/dist/<%= project.name %>.js"></script>
+```
+
 
 Sample Usage
 --------------------------
@@ -73,7 +79,7 @@ Install using [bower](http://bower.io/):
 bower install <%= project.name %>
 ```
 
-Then use it on your page like this:
+Then reference [`<%= project.name %>.js`](dist/<%= project.name %>.js) or [`<%= project.name %>.min.js`](dist/<%= project.name %>.min.js) in your HTML:
 
 ```html
 <script src="bower_components/<%= project.name %>/dist/<%= project.name %>.js"></script>
@@ -105,8 +111,8 @@ To build<%= options.tests ? '/test' : '' %> the project locally on your computer
 4. __Run the unit tests__<br>
 <% if (options.env.node && options.env.browser) { -%>
 `npm run mocha` (test in Node)<br>
-`npm run karma` (test in web browsers + code coverage)<br>
-`npm test` (test in Node and browsers + code coverage)
+`npm run karma` (test in web browsers)<br>
+`npm test` (test in Node and browsers, and report code coverage)
 <% } else if (options.env.node) { -%>
 `npm run mocha` (just the tests)<br>
 `npm test` (tests + code coverage)
