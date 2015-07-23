@@ -1,17 +1,29 @@
 'use strict';
 
-if (typeof(window) === 'object') {
-  // We're running in a web browser
-  window.isBrowser = true;
-  window.isNode = false;
-}
-else {
-  // We're running in Node
-  global.isBrowser = false;
-  global.isNode = true;
+var isNode = typeof(window) === 'undefined';
 
-  // Export node modules as globals
-  global.<%= project.camelCaseName %> = require('../');
-  global.expect = require('chai').expect;
-  global.sinon = require('sinon');
+var helper = {
+  isNode: isNode,
+  isBrowser: !isNode
+};
+
+if (helper.isNode) {
+  module.exports = helper;
 }
+else if (helper.isBrowser) {
+  window.helper = helper;
+
+  // Fake `require()` for browsers
+  window.require = function(name) {
+    name = name.substr(name.lastIndexOf('/') + 1);
+    return name ? window[name] : window.<%= project.camelCaseName %>;
+  }
+}
+
+/**
+ * Set global settings for all tests
+ */
+beforeEach(function() {
+  this.currentTest.timeout(2000);
+  this.currentTest.slow(100);
+});
