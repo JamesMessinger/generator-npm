@@ -1,6 +1,5 @@
 {
   "name": "<%= project.name %>",
-  "version": "0.0.1",
   "description": "<%= project.description %>",
 <% if (options.env.cordova) { -%>
   "keywords": [
