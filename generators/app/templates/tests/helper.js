@@ -11,6 +11,7 @@ if (helper.isNode) {
   module.exports = helper;
 }
 else if (helper.isBrowser) {
+  window.global = window;
   window.helper = helper;
 
   // Fake `require()` for browsers
