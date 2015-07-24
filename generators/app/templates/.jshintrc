@@ -82,10 +82,6 @@
   "globals":<%- options.keep.globals -%>
 <% } else { -%>
   "globals": {
-<% if (options.tests) { -%>
-    "expect"      : false,    // Chai
-    "sinon"       : false     // Sinon
-<% } -%>
   }
 <% } -%>
 
