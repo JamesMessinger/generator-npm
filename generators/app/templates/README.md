@@ -3,13 +3,15 @@
 #### <%= project.description %>
 
 <% if (options.tests) { -%>
-[![Build Status](https://img.shields.io/travis/<%= options.githubUsername %>/<%= project.name %>.svg)](https://travis-ci.org/<%= options.githubUsername %>/<%= project.name %>)
-[![Coverage Status](https://img.shields.io/coveralls/<%= options.githubUsername %>/<%= project.name %>.svg)](https://coveralls.io/r/<%= options.githubUsername %>/<%= project.name %>)
+[![Build Status](https://api.travis-ci.org/<%= options.githubUsername %>/<%= project.name %>.svg)](https://travis-ci.org/<%= options.githubUsername %>/<%= project.name %>)
 <% } -%>
-[![Code Climate Score](https://img.shields.io/codeclimate/github/<%= options.githubUsername %>/<%= project.name %>.svg)](https://codeclimate.com/github/<%= options.githubUsername %>/<%= project.name %>)
-[![Dependencies](https://img.shields.io/david/<%= options.githubUsername %>/<%= project.name %>.svg)](https://david-dm.org/<%= options.githubUsername %>/<%= project.name %>)
+[![Dependencies](https://david-dm.org/<%= options.githubUsername %>/<%= project.name %>.svg)](https://david-dm.org/<%= options.githubUsername %>/<%= project.name %>)
+<% if (options.tests) { -%>
+[![Coverage Status](https://coveralls.io/repos/<%= options.githubUsername %>/<%= project.name %>/badge.svg?branch=master&service=github)](https://coveralls.io/r/<%= options.githubUsername %>/<%= project.name %>)
+<% } -%>
+[![Code Climate Score](https://codeclimate.com/github/<%= options.githubUsername %>/<%= project.name %>/badges/gpa.svg)](https://codeclimate.com/github/<%= options.githubUsername %>/<%= project.name %>)
+[![Codacy Score](https://www.codacy.com/project/badge/XXXXXXXXXXXXXXXXXXXXXXXXXXXX)](https://www.codacy.com/public/jamesmessinger/<%= project.name %>)
 [![Inline docs](http://inch-ci.org/github/<%= options.githubUsername %>/<%= project.name %>.svg?branch=master&style=shields)](http://inch-ci.org/github/<%= options.githubUsername %>/<%= project.name %>)
-[![Downloads](https://img.shields.io/npm/dm/<%= project.name %>.svg)](https://www.npmjs.com/package/<%= project.name %>)
 
 [![npm](http://img.shields.io/npm/v/<%= project.name %>.svg)](https://www.npmjs.com/package/<%= project.name %>)
 <% if (options.env.browser) { -%>
