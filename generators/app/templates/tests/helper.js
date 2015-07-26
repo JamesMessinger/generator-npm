@@ -1,16 +1,21 @@
 'use strict';
-
-var isNode = typeof(window) === 'undefined';
+var isBrowser = typeof(window) === 'object';
 
 var helper = {
-  isNode: isNode,
-  isBrowser: !isNode
+  isNode: !isBrowser,
+  isBrowser: isBrowser,
+  isSafari: isBrowser && /Safari/.test(navigator.userAgent),
+  isFirefox: isBrowser && /Firefox/.test(navigator.userAgent),
+  isIE: isBrowser && /Trident/.test(navigator.userAgent),
+  isChrome: !isBrowser || /Chrome/.test(navigator.userAgent)  // isChrome === true for Node
 };
 
 if (helper.isNode) {
+  // We're running in Node, so just export the helper object
   module.exports = helper;
 }
 else if (helper.isBrowser) {
+  // We're running in a browser, so mimic the Node environment
   window.global = window;
   window.helper = helper;
 
