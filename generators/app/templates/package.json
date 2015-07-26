@@ -31,6 +31,7 @@
     "build": "npm run lint && npm run browserify",
     "lint": "jshint . --verbose && jscs . --verbose",
     "browserify": "simplifyify lib/index.js --outfile dist/<%= project.name %>.js --standalone <%= project.camelCaseName %> --debug --minify",
+    "watch": "npm run browserify -- --watch",
 <% } else { -%>
     "build": "jshint . --verbose && jscs . --verbose",
 <% } -%>
