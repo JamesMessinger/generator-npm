@@ -27,6 +27,14 @@ Features
 * Calls your mom for you
 
 
+Example
+--------------------------
+
+```javascript
+// TODO: Add a code sample
+```
+
+
 <% if (options.env.node && options.env.browser) { -%>
 Installation
 --------------------------
@@ -35,6 +43,12 @@ Install using [npm](https://docs.npmjs.com/getting-started/what-is-npm):
 
 ```bash
 npm install <%= project.fullName %>
+```
+
+Then require it in your code:
+
+```javascript
+var <%= project.camelCaseName %> = require('<%= project.name %>');
 ```
 
 #### Web Browsers
@@ -50,27 +64,18 @@ Then reference [`<%= project.name %>.js`](dist/<%= project.name %>.js) or [`<%= 
 <script src="bower_components/<%= project.name %>/dist/<%= project.name %>.js"></script>
 ```
 
-
-Sample Usage
---------------------------
+Or, if you're using AMD (Require.js), then import it into your module:
 
 ```javascript
-// TODO: Add a code sample
+define(["<%= project.name %>"], function(<%= project.camelCaseName %>) { /* your module's code */ })
 ```
 <% } else if (options.env.node) { -%>
-Installation and Use
+Installation
 --------------------------
 Install using [npm](https://docs.npmjs.com/getting-started/what-is-npm):
 
 ```bash
 npm install <%= project.fullName %>
-```
-
-Then use it in your [Node.js](http://nodejs.org/) script like this:
-
-```javascript
-// TODO: Add a code sample
-var <%= project.camelCaseName %> = require('<%= project.name %>');
 ```
 <% } else if (options.env.browser) { -%>
 Installation and Use
@@ -89,6 +94,12 @@ Then reference [`<%= project.name %>.js`](dist/<%= project.name %>.js) or [`<%= 
   // TODO: Add a code sample
   window.<%= project.camelCaseName %>;
 </script>
+```
+
+Or, if you're using AMD (Require.js), then import it into your module:
+
+```javascript
+define(["<%= project.name %>"], function(<%= project.camelCaseName %>) { /* your module's code */ })
 ```
 <% } -%>
 
