@@ -1,6 +1,6 @@
 {
   "name": "@bigstickcarpet/generator-npm",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "My Yeoman generator for scaffolding npm projects",
   "keywords": [
     "yeoman-generator",
@@ -28,7 +28,7 @@
     "jscs": "^1.13.1",
     "jshint": "^2.8.0",
     "npm-check-updates": "^1.5.1",
-    "version-bump-prompt": "^1.4.1"
+    "version-bump-prompt": "^1.4.2"
   },
   "dependencies": {
     "chalk": "^1.1.0",
