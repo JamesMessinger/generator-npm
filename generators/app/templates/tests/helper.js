@@ -23,7 +23,7 @@ else if (helper.isBrowser) {
   window.require = function(name) {
     name = name.substr(name.lastIndexOf('/') + 1);
     return name ? window[name] : window.<%= project.camelCaseName %>;
-  }
+  };
 }
 
 /**
