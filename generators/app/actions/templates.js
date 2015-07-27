@@ -23,8 +23,11 @@ module.exports = {
       createTemplate.call(this, 'lib/index.js');
     }
 
-    if (this.options.tests && !fs.existsSync(this.destinationPath('tests'))) {
-      createTemplate.call(this, 'tests/index.spec.js');
+    if (this.options.tests) {
+      if (!fs.existsSync(this.destinationPath('tests'))) {
+        // Don't re-create this file if it has been deleted
+        createTemplate.call(this, 'tests/index.spec.js');
+      }
 
       if (!this.options.env.cordova) {
         createTemplate.call(this, '.codeclimate.yml');
