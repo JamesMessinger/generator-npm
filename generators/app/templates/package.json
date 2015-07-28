@@ -30,8 +30,7 @@
 <% if (options.env.browser && !options.env.cordova) { -%>
     "build": "npm run lint && npm run browserify",
     "lint": "jshint . --verbose && jscs . --verbose",
-    "browserify": "simplifyify lib/index.js --outfile dist/<%= project.name %>.js --standalone <%= project.camelCaseName %> --debug --minify --test",
-    "watch": "npm run browserify -- --watch",
+    "browserify": "simplifyify lib/index.js --outfile dist/<%= project.name %>.js --standalone <%= project.camelCaseName %> --debug --minify<%= options.env.node ? '' : ' --test' %>",
 <% } else { -%>
     "build": "jshint . --verbose && jscs . --verbose",
 <% } -%>
@@ -47,7 +46,7 @@
     "test": "karma start --single-run",
 <% } -%>
 <% } -%>
-    "upgrade": "npm-check-updates -u && npm update",
+    "upgrade": "ncu --upgradeAll && npm update",
     "bump": "bump --prompt --tag --push --all",
     "release": "npm run upgrade && npm run build && npm test && npm run bump && npm publish"
   },
