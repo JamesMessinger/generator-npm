@@ -48,7 +48,7 @@
 <% } -%>
     "upgrade": "ncu --upgradeAll && npm update",
     "bump": "bump --prompt --tag --push --all",
-    "release": "npm run upgrade && npm run build && npm test && npm run bump && npm publish"
+    "release": "npm run upgrade && npm run build<%= options.tests ? ' && npm test' : '' %> && npm run bump && npm publish"
   },
   "repository": {
     "type": "git",
