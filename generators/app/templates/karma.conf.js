@@ -26,7 +26,6 @@ module.exports = function(config) {
 };
 <% if (!options.env.node) { -%>
 
-
 /**
  * Configures the code-coverage reporter
  */
@@ -34,21 +33,19 @@ function configureCodeCoverage(config) {
   config.reporters.push('coverage');
   config.coverageReporter = {
     reporters: [
-      // Show a code-coverage summary in the console
       {type: 'text-summary'},
-
-      // Create a code-coverage report for each browser
-      {
-        type: 'lcov',
-        subdir: function(browser) {
-          return browser.toLowerCase().split(/[ /-]/)[0];
-        }
-      },
+      {type: 'lcov', subdir: browserName}
     ]
   };
 }
-<% } -%>
 
+/**
+ * Returns the browser name from the given UserAgent string
+ */
+function browserName(UserAgent) {
+  return UserAgent.toLowerCase().split(/[ /-]/)[0];
+}
+<% } -%>
 
 /**
  * Configures the browsers for the current platform
