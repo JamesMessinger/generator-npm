@@ -17,15 +17,16 @@
   "main": "generators/app/index.js",
   "scripts": {
     "build": "jshint . --verbose && jscs . --verbose",
-    "upgrade": "npm-check-updates -u && npm update",
-    "release": "npm run upgrade && npm run build && bump --prompt --tag --push --all && npm publish"
+    "upgrade": "ncu --upgradeAll && npm update",
+    "bump": "bump --prompt --tag --push --all",
+    "release": "npm run upgrade && npm run build && npm test && npm run bump && npm publish"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/BigstickCarpet/generator-npm.git"
   },
   "devDependencies": {
-    "jscs": "^1.13.1",
+    "jscs": "^2.0.0",
     "jshint": "^2.8.0",
     "npm-check-updates": "^1.5.1",
     "version-bump-prompt": "^1.4.2"
