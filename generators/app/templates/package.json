@@ -53,7 +53,7 @@
 <% } else { -%>
     "upgrade": "ncu --upgradeAll && npm update",
 <% } -%>
-    "bump": "bump --prompt --tag --push --all",
+    "bump": "bump --prompt --grep lib/index.js<%- options.env.browser ? ' dist/*' : '' %> --tag --push --all",
     "release": "npm run upgrade && npm run build<%- options.tests ? ' && npm test' : '' %> && npm run bump && npm publish"
   },
   "repository": {
