@@ -1,6 +1,6 @@
 'use strict';
 
-<% if (options.env.node) { -%>
+<% if (!options.env.browser) { -%>
 var <%= project.camelCaseName %> = require('../'),
     expect = require('chai').expect,
     sinon  = require('sinon');

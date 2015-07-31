@@ -27,28 +27,34 @@
   "main": "lib/index.js",
 <% } -%>
   "scripts": {
+    "lint": "jshint . --verbose && jscs . --verbose",
 <% if (options.env.browser && !options.env.cordova) { -%>
     "build": "npm run lint && npm run browserify",
-    "lint": "jshint . --verbose && jscs . --verbose",
     "browserify": "simplifyify lib/index.js --outfile dist/<%= project.name %>.js --standalone <%= project.camelCaseName %> --debug --minify<%= options.env.node ? '' : ' --test' %>",
+    "watch": "npm run browserify -- --watch",
 <% } else { -%>
-    "build": "jshint . --verbose && jscs . --verbose",
+    "build": "npm run lint",
 <% } -%>
 <% if (options.tests) { -%>
-<% if (options.env.node && options.env.browser) { -%>
+<%    if (options.env.node && options.env.browser) { -%>
     "test": "istanbul cover _mocha -- --bail --recursive tests && npm run karma",
     "mocha": "mocha --bail --recursive tests",
     "karma": "karma start --single-run",
-<% } else if (options.env.node) { -%>
+<%    } else if (options.env.node) { -%>
     "test": "istanbul cover _mocha -- --bail --recursive tests",
     "mocha": "mocha --bail --recursive tests",
-<% } else if (options.env.browser) { -%>
-    "test": "karma start --single-run",
+<%    } else if (options.env.browser) { -%>
+    "test": "npm run karma",
+    "karma": "karma start --single-run"
+<%    } -%>
 <% } -%>
-<% } -%>
+<% if (options.env.browser && options.tests) { -%>
+    "upgrade": "ncu --upgradeAll && npm update && bower update",
+<% } else { -%>
     "upgrade": "ncu --upgradeAll && npm update",
+<% } -%>
     "bump": "bump --prompt --tag --push --all",
-    "release": "npm run upgrade && npm run build<%= options.tests ? ' && npm test' : '' %> && npm run bump && npm publish"
+    "release": "npm run upgrade && npm run build<%- options.tests ? ' && npm test' : '' %> && npm run bump && npm publish"
   },
   "repository": {
     "type": "git",
@@ -57,29 +63,30 @@
   "devDependencies": {
 <% if (options.env.browser) { -%>
     "simplifyify": "^1.0.0",
-<% if (options.tests) { -%>
+<%    if (options.tests) { -%>
+    "bower": "^1.4.1",
     "karma": "^0.12.31",
-    "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.1.8",
     "karma-cli": "0.0.4",
+<%      if (!options.env.node) { -%>
     "karma-coverage": "^0.2.6",
+<%      } -%>
     "karma-firefox-launcher": "^0.1.4",
     "karma-ie-launcher": "^0.1.5",
     "karma-mocha": "^0.1.10",
     "karma-mocha-reporter": "^1.0.2",
     "karma-phantomjs-launcher": "^0.1.4",
     "karma-safari-launcher": "^0.1.1",
-    "karma-sinon": "^1.0.4",
-<% } -%>
+<%    } -%>
 <% } -%>
 <% if (options.env.node && options.tests) { -%>
     "istanbul": "^0.3.13",
 <% } -%>
 <% if (options.tests) { -%>
     "coveralls": "^2.11.2",
-    "mocha": "^2.2.4",
-    "chai": "^2.3.0",
-    "sinon": "^1.14.1",
+    "mocha": "^2.2.5",
+    "chai": "^3.2.0",
+    "sinon": "^1.15.4",
 <% } -%>
     "jscs": "^1.13.1",
     "jshint": "^2.7.0",

@@ -4,15 +4,18 @@
 // https://karma-runner.github.io/0.12/config/configuration-file.html
 module.exports = function(config) {
   var baseConfig = {
-    frameworks: ['mocha', 'chai', 'sinon'],
+    frameworks: ['mocha'],
     reporters: ['mocha'],
-
     files: [
-      // <%= project.name %>
+      // Third-Party Libraries
+      'www/bower_components/chai/chai.js',
+      'www/bower_components/sinon-js/sinon.js',
+
+      // <%= project.friendlyName %>
       'dist/<%= project.name %><%= options.env.node ? '.min' : '.test' %>.js',
 
-      // Unit tests
-      'tests/helper.js',
+      // Unit Tests
+      'tests/**/_*.js',
       'tests/**/*.spec.js'
     ]
   };

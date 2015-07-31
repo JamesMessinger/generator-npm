@@ -35,5 +35,12 @@
     "/.*"
   ],
 <% } -%>
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+<% if (options.tests) { -%>
+    "chai": "*",
+    "mocha": "*",
+    "sinon-js": "*"
+<% } -%>
+  }
 }

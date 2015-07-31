@@ -5,9 +5,11 @@
   "excludeFiles": [
 <% if (options.env.node && options.tests) { -%>
     "coverage/**",
+    "tests/**",
 <% } -%>
 <% if (options.env.browser && !options.env.cordova) { -%>
     "dist/**",
+    "www/**",
 <% } -%>
     "node_modules/**"
   ],

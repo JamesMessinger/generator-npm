@@ -10,6 +10,7 @@ module.exports = {
    * Copies template files to the project, unless they already exist
    */
   create: function() {
+    createTemplate.call(this, '.bowerrc');
     createTemplate.call(this, '_gitignore', '.gitignore');
     createTemplate.call(this, '.jshintignore');
     createTemplate.call(this, '_npmignore', '.npmignore');
@@ -36,11 +37,10 @@ module.exports = {
       if (this.options.env.browser) {
         createTemplate.call(this, 'karma.conf.js');
         createTemplate.call(this, 'tests/index.html');
-
-        if (this.options.env.node) {
-          createTemplate.call(this, 'tests/helper.js');
-        }
+        createTemplate.call(this, 'tests/_config.js');
       }
+
+      createTemplate.call(this, 'index.html');
     }
 
     if (this.options.env.browser && !this.options.env.cordova) {

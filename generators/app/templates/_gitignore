@@ -6,9 +6,6 @@
 **/.DS_Store
 npm-debug.log
 /.idea
-<% if (options.env.browser && !options.env.cordova) { -%>
-/bower_components
-<% } -%>
 <% if (options.env.node && options.tests) { -%>
 /coverage
 <% } -%>

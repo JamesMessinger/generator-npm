@@ -3,9 +3,6 @@
 **/.DS_Store
 npm-debug.log
 /.idea
-<% if (options.env.browser && !options.env.cordova) { -%>
-/bower_components
-<% } -%>
 <% if (options.env.node && options.tests) { -%>
 /coverage
 <% } -%>
@@ -18,5 +15,8 @@ npm-debug.log
 <% } -%>
 <% if (options.tests) { -%>
 /tests
+<% } -%>
+<% if (options.env.browser && !options.env.cordova) { -%>
+/www
 <% } -%>
 /.*
