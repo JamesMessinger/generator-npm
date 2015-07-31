@@ -35,12 +35,12 @@ module.exports = {
       }
 
       if (this.options.env.browser) {
+        createTemplate.call(this, '.nojekyll');
+        createTemplate.call(this, 'index.html');
         createTemplate.call(this, 'karma.conf.js');
         createTemplate.call(this, 'tests/index.html');
         createTemplate.call(this, 'tests/_config.js');
       }
-
-      createTemplate.call(this, 'index.html');
     }
 
     if (this.options.env.browser && !this.options.env.cordova) {
