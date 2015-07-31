@@ -19,7 +19,7 @@
 <% } -%>
 [![License](https://img.shields.io/npm/l/<%= project.name %>.svg)](LICENSE)
 
-<% if (options.env.browser) { -%>
+<% if (options.env.browser && options.tests) { -%>
 [![Browser Compatibility](https://saucelabs.com/browser-matrix/<%= options.githubUsername.toLowerCase() %>-<%= project.name %>.svg)](https://saucelabs.com/u/<%= options.githubUsername.toLowerCase() %>-<%= project.name %>)
 <% } -%>
 
