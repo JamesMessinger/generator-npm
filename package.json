@@ -16,7 +16,8 @@
   "homepage": "https://bigstickcarpet.github.io/generator-npm",
   "main": "generators/app/index.js",
   "scripts": {
-    "build": "jshint . --verbose && jscs . --verbose",
+    "lint": "jshint . --verbose && jscs . --verbose",
+    "build": "npm run lint",
     "upgrade": "ncu --upgradeAll && npm update",
     "bump": "bump --prompt --tag --push --all",
     "release": "npm run upgrade && npm run build && npm test && npm run bump && npm publish"

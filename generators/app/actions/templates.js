@@ -10,7 +10,6 @@ module.exports = {
    * Copies template files to the project, unless they already exist
    */
   create: function() {
-    createTemplate.call(this, '.bowerrc');
     createTemplate.call(this, '_gitignore', '.gitignore');
     createTemplate.call(this, '.jshintignore');
     createTemplate.call(this, '_npmignore', '.npmignore');
@@ -35,6 +34,7 @@ module.exports = {
       }
 
       if (this.options.env.browser) {
+        createTemplate.call(this, '.bowerrc');
         createTemplate.call(this, '.nojekyll');
         createTemplate.call(this, 'index.html');
         createTemplate.call(this, 'karma.conf.js');
