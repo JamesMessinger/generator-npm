@@ -12,6 +12,6 @@ exclude_paths:
 <% } -%>
 <% if (options.env.browser) { -%>
 - "karma.conf.js"
-- "www"
+- "www/*"
 <% } -%>
 <% } -%>
