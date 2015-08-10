@@ -1,4 +1,4 @@
-![Yeoman logo](http://yeoman.io/assets/img/tool-yo.3dcc.png)
+![Yeoman logo](http://i.imgur.com/f8hrkK4.png)
 
 [![Dependencies](https://david-dm.org/BigstickCarpet/generator-npm.svg)](https://david-dm.org/BigstickCarpet/generator-npm)
 [![npm](http://img.shields.io/npm/v/@bigstickcarpet/generator-npm.svg)](https://www.npmjs.com/package/@bigstickcarpet/generator-npm)
