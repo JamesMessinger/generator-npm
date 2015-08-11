@@ -28,11 +28,15 @@
 <% if (!options.env.cordova) { -%>
   "ignore": [
     "/bower_components",
-<% if (options.tests) { -%>
-    "/tests",
-<% } -%>
     "/lib",
-    "/.*"
+    "/www",
+<%    if (options.tests) { -%>
+    "/tests",
+    "/karma.conf.js",
+<%    } -%>
+    "/.*",
+    "/index.html",
+    "/package.json"
   ],
 <% } -%>
   "dependencies": {},
