@@ -48,7 +48,7 @@
     "karma": "karma start --single-run"
 <%    } -%>
 <% } -%>
-<% if (options.env.browser && options.tests) { -%>
+<% if (options.env.browser) { -%>
     "upgrade": "ncu --upgradeAll && npm update && bower update",
 <% } else { -%>
     "upgrade": "ncu --upgradeAll && npm update",
@@ -67,8 +67,8 @@
   "devDependencies": {
 <% if (options.env.browser) { -%>
     "simplifyify": "^1.0.0",
-<%    if (options.tests) { -%>
     "bower": "^1.4.1",
+<%    if (options.tests) { -%>
     "karma": "^0.12.31",
     "karma-chrome-launcher": "^0.1.8",
     "karma-cli": "0.0.4",
