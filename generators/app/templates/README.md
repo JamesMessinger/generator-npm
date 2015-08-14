@@ -20,12 +20,15 @@
 [![License](https://img.shields.io/npm/l/<%= project.name %>.svg)](LICENSE)
 
 <% if (options.env.browser && options.tests) { -%>
-[![Browser Compatibility](https://saucelabs.com/browser-matrix/<%= project.name %>.svg)](http://<%= options.githubUsername.toLowerCase() %>.github.io/<%= project.name %>)
+[![Browser Compatibility](https://saucelabs.com/browser-matrix/<%= project.name %>.svg)](https://saucelabs.com/u/<%= project.name %>)
 <% } -%>
 
 
 Features
 --------------------------
+<% if (options.env.browser && options.env.node && options.tests) { -%>
+* [Tested](http://<%= options.githubUsername.toLowerCase() %>.github.io/<%= project.name %>/tests/index.html) in Node, IO.js, and all modern web browsers on Mac, Windows, Linux, iOS, and Android
+<% } %>
 * Walks your dog
 * Finds your lost car keys
 * Calls your mom for you
