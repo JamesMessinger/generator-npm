@@ -30,22 +30,25 @@
     "lint": "jshint . --verbose && jscs . --verbose",
 <% if (options.env.browser && !options.env.cordova) { -%>
     "build": "npm run lint && npm run browserify",
-    "browserify": "simplifyify lib/index.js --outfile dist/<%= project.name %>.js --standalone <%= project.camelCaseName %> --debug --minify<%= options.env.node ? '' : ' --test' %>",
+    "browserify": "simplifyify lib/index.js --outfile dist/<%= project.name %>.js --standalone <%= project.camelCaseName %> --debug --minify --test",
     "watch": "npm run browserify -- --watch",
 <% } else { -%>
     "build": "npm run lint",
 <% } -%>
 <% if (options.tests) { -%>
-<%    if (options.env.node && options.env.browser) { -%>
-    "test": "istanbul cover _mocha -- --bail --recursive \"tests/**/_*\" \"tests/**/*.spec.js\" && npm run karma",
+<%    if (options.env.node) { -%>
     "mocha": "mocha --bail --recursive \"tests/**/_*\" \"tests/**/*.spec.js\"",
+    "istanbul": "istanbul cover _mocha --dir coverage/node -- --bail --recursive \"tests/**/_*\" \"tests/**/*.spec.js\"",
+<%    } -%>  
+<%    if (options.env.browser) { -%>
     "karma": "karma start --single-run",
+<%    } -%>  
+<%    if (options.env.node && options.env.browser) { -%>
+    "test": "npm run istanbul && npm run karma",
 <%    } else if (options.env.node) { -%>
-    "test": "istanbul cover _mocha -- --bail --recursive \"tests/**/_*\" \"tests/**/*.spec.js\"",
-    "mocha": "mocha --bail --recursive \"tests/**/_*\" \"tests/**/*.spec.js\"",
+    "test": "npm run istanbul",
 <%    } else if (options.env.browser) { -%>
     "test": "npm run karma",
-    "karma": "karma start --single-run"
 <%    } -%>
 <% } -%>
 <% if (options.env.browser) { -%>
@@ -72,9 +75,7 @@
     "karma": "^0.12.31",
     "karma-chrome-launcher": "^0.1.8",
     "karma-cli": "0.0.4",
-<%      if (!options.env.node) { -%>
     "karma-coverage": "^0.2.6",
-<%      } -%>
     "karma-firefox-launcher": "^0.1.4",
     "karma-ie-launcher": "^0.1.5",
     "karma-mocha": "^0.1.10",

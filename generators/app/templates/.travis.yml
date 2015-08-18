@@ -3,22 +3,45 @@
 
 sudo: false
 language: node_js
-node_js:
-<% if (options.env.node) { -%>
-  - 'iojs'
-  - '0.10'
-  - '0.11'
+matrix:
+  include:
+<% if (options.env.node && options.env.browser) { -%>
+    # IO.js
+    - node_js: iojs
+      env: KARMA=false
+    
+    # Node
+    - node_js: 0.10
+      env: KARMA=false
+    - node_js: 0.11
+      env: KARMA=false
+    - node_js: 0.12
+      env: KARMA=false
+    
+    # Browsers
+    - node_js: 0.12
+      env: KARMA=true
+<% } else if (options.env.node) { -%>
+    # IO.js
+    - node_js: iojs
+    
+    # Node
+    - node_js: 0.10
+    - node_js: 0.11
+    - node_js: 0.12
+<% } else { -%>
+    # Browsers
+    - node_js: 0.12
+      env: KARMA=true
 <% } -%>
-  - '0.12'
-branches:
-  only:
-    - /^v\d\.\d\.\d/    # only build tagged versions (rather than EVERY push)
-    - /^PR /            # also build pull requests
 <% if (options.env.browser) { -%>
 before_script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
-  - npm run build
 <% } -%>
+branches:
+  only:
+    - /^v\d\.\d\.\d/    # only build tagged versions (rather than EVERY push)
+    - /^PR /            # also build pull requests
 after_success:
-  - cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js
+  - cat coverage/*/lcov.info | node_modules/coveralls/bin/coveralls.js
