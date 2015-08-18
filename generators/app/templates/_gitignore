@@ -9,4 +9,7 @@ npm-debug.log
 <% if (options.env.node && options.tests) { -%>
 /coverage
 <% } -%>
+<% if (options.env.browser && options.tests) { -%>
+/dist/*.test.js
+<% } -%>
 /node_modules

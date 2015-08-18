@@ -30,7 +30,7 @@
     "lint": "jshint . --verbose && jscs . --verbose",
 <% if (options.env.browser && !options.env.cordova) { -%>
     "build": "npm run lint && npm run browserify",
-    "browserify": "simplifyify lib/index.js --outfile dist/<%= project.name %>.js --standalone <%= project.camelCaseName %> --debug --minify --test",
+    "browserify": "simplifyify lib/index.js --outfile dist/<%= project.name %>.js --standalone <%= project.camelCaseName %> --debug --minify",
     "watch": "npm run browserify -- --watch",
 <% } else { -%>
     "build": "npm run lint",
@@ -44,11 +44,11 @@
     "karma": "karma start --single-run",
 <%    } -%>  
 <%    if (options.env.node && options.env.browser) { -%>
-    "test": "npm run istanbul && npm run karma",
+    "test": "npm run browserify -- --test && npm run istanbul && npm run karma",
 <%    } else if (options.env.node) { -%>
     "test": "npm run istanbul",
 <%    } else if (options.env.browser) { -%>
-    "test": "npm run karma",
+    "test": "npm run browserify -- --test && npm run karma",
 <%    } -%>
 <% } -%>
 <% if (options.env.browser) { -%>
