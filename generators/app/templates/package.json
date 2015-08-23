@@ -37,8 +37,8 @@
 <% } -%>
 <% if (options.tests) { -%>
 <%    if (options.env.node) { -%>
-    "mocha": "mocha --bail --recursive \"tests/**/_*\" \"tests/**/*.spec.js\"",
-    "istanbul": "istanbul cover _mocha --dir coverage/node -- --bail --recursive \"tests/**/_*\" \"tests/**/*.spec.js\"",
+    "mocha": "mocha --bail --recursive tests/fixtures tests/specs",
+    "istanbul": "istanbul cover _mocha --dir coverage/node -- --bail --recursive tests/fixtures tests/specs",
 <%    } -%>  
 <%    if (options.env.browser) { -%>
     "karma": "karma start --single-run",

@@ -24,19 +24,20 @@ module.exports = {
     }
 
     if (this.options.tests) {
-      if (!fs.existsSync(this.destinationPath('tests'))) {
+      if (!fs.existsSync(this.destinationPath('tests/specs'))) {
         // Don't re-create this file if it has been deleted
-        createTemplate.call(this, 'tests/index.spec.js');
+        createTemplate.call(this, 'tests/specs/index.spec.js');
       }
 
       if (!this.options.env.cordova) {
         createTemplate.call(this, '.codeclimate.yml');
+        createTemplate.call(this, 'tests/fixtures/config.js');
       }
 
       if (this.options.env.browser) {
         createTemplate.call(this, 'karma.conf.js');
         createTemplate.call(this, 'tests/index.html');
-        createTemplate.call(this, 'tests/_config.js');
+        createTemplate.call(this, 'tests/fixtures/globals.js');
       }
     }
 
