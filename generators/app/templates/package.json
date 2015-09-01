@@ -61,7 +61,7 @@
 <% } else { -%>
     "bump": "bump --prompt --tag --push --all",
 <% } -%>
-    "release": "npm run upgrade && npm run build<%- options.tests ? ' && npm test' : '' %> && npm run bump && npm publish"
+    "release": "npm run upgrade<%- options.env.browser ? '' : ' && npm run build' %><%- options.tests ? ' && npm test' : '' %> && npm run bump && npm publish"
   },
   "repository": {
     "type": "git",
