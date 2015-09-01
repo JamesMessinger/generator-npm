@@ -12,6 +12,7 @@ var baseConfig = {
 
     // <%= project.friendlyName %>
     'dist/<%= project.name %>.min.js',
+    {pattern: 'dist/*.map', included: false, served: true},
 
     // Test Fixtures
     'tests/fixtures/**/*.js',
