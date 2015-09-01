@@ -8,6 +8,7 @@ npm-debug.log
 <% } -%>
 <% if (options.env.browser && options.tests) { -%>
 /dist/*.test.js
+karma.conf.js
 <% } -%>
 <% if (options.env.browser && !options.env.node && !options.env.cordova) { -%>
 /lib
@@ -18,5 +19,7 @@ npm-debug.log
 <% } -%>
 <% if (options.env.browser && !options.env.cordova) { -%>
 /www
+bower.json
+index.html
 <% } -%>
 /.*
