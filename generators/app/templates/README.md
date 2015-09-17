@@ -27,11 +27,11 @@
 Features
 --------------------------
 <% if (options.env.browser && options.env.node && options.tests) { -%>
-* [Tested](http://<%= options.githubUsername.toLowerCase() %>.github.io/<%= project.name %>/tests/index.html) in Node, IO.js, and all modern web browsers on Mac, Windows, Linux, iOS, and Android
-<% } %>
-* Walks your dog
-* Finds your lost car keys
-* Calls your mom for you
+- [Tested](http://<%= options.githubUsername.toLowerCase() %>.github.io/<%= project.name %>/tests/index.html) in Node, IO.js, and all modern web browsers on Mac, Windows, Linux, iOS, and Android
+<% } -%>
+- Walks your dog
+- Finds your lost car keys
+- Calls your mom for you
 
 
 Example
@@ -118,17 +118,17 @@ I welcome any contributions, enhancements, and bug-fixes.  [File an issue](https
 #### Building<%= options.tests ? '/Testing' : '' %>
 To build<%= options.tests ? '/test' : '' %> the project locally on your computer:
 
-1. __Clone this repo__<br>
+1. **Clone this repo**<br>
 `git clone https://github.com/<%= options.githubUsername.toLowerCase() %>/<%= project.name %>.git`
 
-2. __Install dependencies__<br>
+2. **Install dependencies**<br>
 `npm install`
 
-3. __Run the build script__<br>
+3. **Run the build script**<br>
 `npm run build`
 
 <% if (options.tests) { -%>
-4. __Run the unit tests__<br>
+4. **Run the unit tests**<br>
 <% if (options.env.node && options.env.browser) { -%>
 `npm run mocha` (test in Node)<br>
 `npm run karma` (test in web browsers)<br>
