@@ -203,4 +203,8 @@ function configureSauceLabs(config) {
 
   config.reporters.push('saucelabs');
   config.browsers = Object.keys(config.customLaunchers);
+  config.captureTimeout = 120000;
+  config.browserDisconnectTimeout = 15000;
+  config.browserNoActivityTimeout = 15000;
+  // config.logLevel = 'debug';
 }
