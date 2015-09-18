@@ -39,6 +39,7 @@ module.exports = function(config) {
   if (debug) {
     configureForDebugging(baseConfig);
   }
+  else {
     if (coverage) {
       configureCodeCoverage(baseConfig);
     }
@@ -60,7 +61,7 @@ module.exports = function(config) {
  * This is intended for debugging purposes only.
  */
 function configureForDebugging(config) {
-  config.files.splice(config.files.indexOf('dist/ref-parser.min.js'), 1, 'dist/ref-parser.js');
+  config.files.splice(config.files.indexOf('dist/<%= project.name %>.min.js'), 1, 'dist/<%= project.name %>.js');
   config.browsers = ['Chrome'];
 }
 
