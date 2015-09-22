@@ -7,8 +7,8 @@ var baseConfig = {
   reporters: ['mocha'],
   files: [
     // Third-Party Libraries
-    'tests/bower_components/chai/chai.js',
-    'tests/bower_components/sinon-js/sinon.js',
+    'www/bower_components/chai/chai.js',
+    'www/bower_components/sinon-js/sinon.js',
 
     // <%= project.friendlyName %>
     'dist/<%= project.name %>.min.js',
