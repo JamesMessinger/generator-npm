@@ -127,29 +127,6 @@ function configureSauceLabs(config) {
   };
 
   config.customLaunchers = {
-    'IE-9': {
-      base: 'SauceLabs',
-      platform: 'Windows 7',
-      browserName: 'internet explorer',
-      version: '9'
-    },
-    'IE-10': {
-      base: 'SauceLabs',
-      platform: 'Windows 7',
-      browserName: 'internet explorer',
-      version: '10'
-    },
-    'IE-11': {
-      base: 'SauceLabs',
-      platform: 'Windows 7',
-      browserName: 'internet explorer',
-      version: '11'
-    },
-    'IE-Edge': {
-      base: 'SauceLabs',
-      platform: 'Windows 10',
-      browserName: 'microsoftedge'
-    },
     'Chrome-Latest': {
       base: 'SauceLabs',
       platform: 'Windows 7',
@@ -170,35 +147,16 @@ function configureSauceLabs(config) {
       platform: 'OS X 10.10',
       browserName: 'safari'
     },
-    'iOS-6': {
+    'IE-10': {
       base: 'SauceLabs',
-      platform: 'OS X 10.10',
-      browserName: 'iphone',
-      version: '6'
+      platform: 'Windows 7',
+      browserName: 'internet explorer',
+      version: '10'
     },
-    'iOS-8': {
+    'IE-Edge': {
       base: 'SauceLabs',
-      platform: 'OS X 10.10',
-      browserName: 'iphone',
-      version: '8'
-    },
-    'iOS-9': {
-      base: 'SauceLabs',
-      platform: 'OS X 10.10',
-      browserName: 'iphone',
-      version: '9'
-    },
-    'Android-4-4': {
-      base: 'SauceLabs',
-      platform: 'Linux',
-      browserName: 'android',
-      version: '4.4'
-    },
-    'Android-5': {
-      base: 'SauceLabs',
-      platform: 'Linux',
-      browserName: 'android',
-      version: '5'
+      platform: 'Windows 10',
+      browserName: 'microsoftedge'
     }
   };
 
