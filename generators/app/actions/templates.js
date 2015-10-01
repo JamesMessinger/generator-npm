@@ -1,4 +1,3 @@
-/* jshint -W040 */
 'use strict';
 
 var _      = require('lodash'),
@@ -7,11 +6,19 @@ var _      = require('lodash'),
 
 module.exports = {
   /**
+   * Removes old template files that aren't needed anymore
+   */
+  remove: function() {
+    this.fs.delete(this.destinationPath('.jshintignore'));
+    this.fs.delete(this.destinationPath('.jshintrc'));
+  },
+
+  /**
    * Copies template files to the project, unless they already exist
    */
   create: function() {
     createTemplate.call(this, '_gitignore', '.gitignore');
-    createTemplate.call(this, '.jshintignore');
+    createTemplate.call(this, '.eslintignore');
     createTemplate.call(this, '_npmignore', '.npmignore');
     createTemplate.call(this, 'LICENSE');
     createTemplate.call(this, 'README.md');
@@ -67,7 +74,7 @@ module.exports = {
    * Copies JSON template files, merging them with existing files if needed
    */
   json: function() {
-    mergeJSONTemplate.call(this, '.jshintrc', 'globals');
+    mergeJSONTemplate.call(this, '.eslintrc', 'globals');
     mergeJSONTemplate.call(this, '.jscsrc', 'excludeFiles');
     mergeJSONTemplate.call(this, 'package.json');
 

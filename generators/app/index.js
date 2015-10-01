@@ -16,6 +16,7 @@ module.exports = yeoman.Base.extend({
     this.options = this.config.defaults({
       githubUsername: undefined,    // string
       tests: undefined,             // boolean
+      es6: undefined,               // boolean
       env: {
         node: undefined,            // boolean
         browser: undefined,         // boolean
@@ -32,9 +33,10 @@ module.exports = yeoman.Base.extend({
   },
 
   writing: {
-    1: templates.create,
-    2: templates.overwrite,
-    3: templates.json
+    1: templates.remove,
+    2: templates.create,
+    3: templates.overwrite,
+    4: templates.json
   },
 
   install: {

@@ -1,11 +1,11 @@
 <% if (options.env.node && options.tests) { -%>
-/coverage
+coverage
 <% } -%>
 <% if (options.env.browser && !options.env.cordova) { -%>
-/dist
-/www
+dist
+www
 <% } -%>
-/node_modules
+node_modules
 <% if (options.tests) { -%>
-/tests
+tests
 <% } -%>

@@ -1,5 +1,5 @@
 <% if (options.env.browser) { -%>
-/**!
+/** !
  * <%= project.friendlyName %> v0.0.1
  *
  * @link https://github.com/<%= options.githubUsername.toLowerCase() %>/<%= project.name %>

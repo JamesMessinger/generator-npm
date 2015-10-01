@@ -112,6 +112,13 @@ module.exports = {
           ]
         },
         {
+          name: 'es6',
+          type: 'confirm',
+          message: 'Will this project use ES6?:',
+          default: false,
+          when: _.isUndefined(this.options.es6)
+        },
+        {
           name: 'yeoman',
           type: 'confirm',
           message: 'Is this a Yeoman generator?:',
@@ -139,6 +146,7 @@ module.exports = {
         me.options.env.browser = me.options.env.browser || _.contains(answers.env, 'browser');
         me.options.env.yeoman = me.options.env.yeoman || !!answers.yeoman;
         me.options.env.cordova = me.options.env.cordova || !!answers.cordova;
+        me.options.es6 = me.options.es6 || !!answers.es6;
         me.options.tests = me.options.tests || !!answers.tests;
         me.config.set(me.options);
         done();

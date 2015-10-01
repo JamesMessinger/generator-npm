@@ -27,7 +27,7 @@
   "main": "lib/index.js",
 <% } -%>
   "scripts": {
-    "lint": "jshint . --verbose && jscs . --verbose",
+    "lint": "eslint lib && jscs lib --verbose",
 <% if (options.env.browser && !options.env.cordova) { -%>
     "build": "npm run lint && npm run browserify",
     "browserify": "simplifyify lib/index.js --outfile dist/<%= project.name %>.js --standalone <%= project.camelCaseName %> --debug --minify",
@@ -39,10 +39,10 @@
 <%    if (options.env.node) { -%>
     "mocha": "mocha --bail --recursive tests/fixtures tests/specs",
     "istanbul": "istanbul cover _mocha --dir coverage/node -- --bail --recursive tests/fixtures tests/specs",
-<%    } -%>  
+<%    } -%>
 <%    if (options.env.browser) { -%>
     "karma": "karma start --single-run",
-<%    } -%>  
+<%    } -%>
 <%    if (options.env.node && options.env.browser) { -%>
     "test": "npm run browserify -- --test && npm run istanbul && npm run karma",
 <%    } else if (options.env.node) { -%>
@@ -72,17 +72,18 @@
     "simplifyify": "^1.0.0",
     "bower": "^1.4.1",
 <%    if (options.tests) { -%>
-    "karma": "^0.12.31",
-    "karma-chrome-launcher": "^0.1.8",
-    "karma-cli": "0.0.4",
-    "karma-coverage": "^0.2.6",
+    "karma": "^0.13.10",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-cli": "^0.1.1",
+    "karma-coverage": "^0.5.2",
     "karma-firefox-launcher": "^0.1.4",
-    "karma-ie-launcher": "^0.1.5",
-    "karma-mocha": "^0.1.10",
+    "karma-ie-launcher": "^0.2.0",
+    "karma-mocha": "^0.2.0",
     "karma-mocha-reporter": "^1.0.2",
-    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-phantomjs-launcher": "^0.2.1",
     "karma-safari-launcher": "^0.1.1",
     "karma-sauce-launcher": "^0.2.14",
+    "phantomjs": "^1.9.0",
 <%    } -%>
 <% } -%>
 <% if (options.env.node && options.tests) { -%>
@@ -94,8 +95,8 @@
     "chai": "^3.2.0",
     "sinon": "^1.15.4",
 <% } -%>
-    "jscs": "^1.13.1",
-    "jshint": "^2.7.0",
+    "jscs": "^2.2.1",
+    "eslint": "^1.5.1",
     "npm-check-updates": "^2.2.4",
     "version-bump-prompt": "^1.1.0"
   },
