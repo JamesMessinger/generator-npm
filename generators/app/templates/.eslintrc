@@ -204,7 +204,7 @@
     "id-length":                        0,                // enforces minimum and maximum identifier lengths (variable names, property names etc.)
     "id-match":                         0,                // require identifiers to match the provided regular expression
     "indent":                          [2, 2, {           // specify tab or space width for your code
-      "SwitchCase":                     0,                // indent multipler for "switch" "case" statements
+      "SwitchCase":                     1,                // indent multipler for "switch" "case" statements
       "VariableDeclarator":             2                 // indent multiplier for indented "var" statements
     }],
     "jsx-quotes":                       0,                // specify whether double or single quotes should be used in JSX attributes
