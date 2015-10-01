@@ -169,7 +169,7 @@
       "vars":                           "all",            // check "all" variables, or only "local" ones
       "args":                           "none"            // check "all" arguments, "none", or "after-used"
     }],
-    "no-use-before-define":  [2, "nofunc"],               // disallow use of variables before they are defined
+    "no-use-before-define":            [2, "nofunc"],     // disallow use of variables before they are defined
 
 
     ////////// Node.js //////////
