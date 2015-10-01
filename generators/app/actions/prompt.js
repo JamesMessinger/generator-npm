@@ -6,6 +6,7 @@ var _     = require('lodash'),
     yosay = require('yosay');
 
 module.exports = {
+
   /**
    * Prompt the user for any missing project info
    */
@@ -123,14 +124,14 @@ module.exports = {
           type: 'confirm',
           message: 'Is this a Yeoman generator?:',
           default: _.startsWith(this.project.name, 'generator-'),
-          when: function(answers) {return _.contains(answers.env, 'node') && !_.contains(answers.env, 'browser');}
+          when: function(answers) { return _.contains(answers.env, 'node') && !_.contains(answers.env, 'browser'); }
         },
         {
           name: 'cordova',
           type: 'confirm',
           message: 'Is this a Cordova app?:',
           default: false,
-          when: function(answers) {return _.contains(answers.env, 'browser') && !_.contains(answers.env, 'node');}
+          when: function(answers) { return _.contains(answers.env, 'browser') && !_.contains(answers.env, 'node'); }
         },
         {
           name: 'tests',

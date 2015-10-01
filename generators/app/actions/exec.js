@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = {
+
   /**
    * Installs npm-check-updates, which is the only prerequisite needed to run {@link updateDependencies}.
    */

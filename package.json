@@ -16,20 +16,20 @@
   "homepage": "https://bigstickcarpet.github.io/generator-npm",
   "main": "generators/app/index.js",
   "scripts": {
-    "lint": "jshint . --verbose && jscs . --verbose",
+    "lint": "eslint generators && jscs generators --verbose",
     "build": "npm run lint",
     "upgrade": "ncu --upgradeAll && npm update",
     "bump": "bump --prompt --tag --push --all",
-    "release": "npm run upgrade && npm run build && npm test && npm run bump && npm publish"
+    "release": "npm run upgrade && npm run build && npm run bump && npm publish"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/BigstickCarpet/generator-npm.git"
   },
   "devDependencies": {
-    "jscs": "^2.1.1",
-    "jshint": "^2.8.0",
-    "npm-check-updates": "^2.2.3",
+    "jscs": "^2.2.1",
+    "eslint": "^1.5.1",
+    "npm-check-updates": "^2.2.4",
     "version-bump-prompt": "^1.5.2"
   },
   "dependencies": {

@@ -1,3 +1,4 @@
+/* eslint no-invalid-this:0 */
 'use strict';
 
 var _      = require('lodash'),
@@ -5,6 +6,7 @@ var _      = require('lodash'),
     rimraf = require('rimraf');
 
 module.exports = {
+
   /**
    * Removes old template files that aren't needed anymore
    */
