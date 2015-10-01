@@ -34,7 +34,7 @@
     global.userAgent = {
       isNode: true,
       isBrowser: false
-    }
+    };
   }
 <% } -%>
 

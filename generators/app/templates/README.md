@@ -15,7 +15,7 @@
 
 [![npm](http://img.shields.io/npm/v/<%= project.name %>.svg)](https://www.npmjs.com/package/<%= project.name %>)
 <% if (options.env.browser) { -%>
-[![Bower](http://img.shields.io/bower/v/<%= project.name %>.svg)](#bower)
+[![Bower](http://img.shields.io/bower/v/<%= project.name %>.svg)](http://bower.io/)
 <% } -%>
 [![License](https://img.shields.io/npm/l/<%= project.name %>.svg)](LICENSE)
 
