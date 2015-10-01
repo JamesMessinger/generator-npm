@@ -8,6 +8,7 @@
     // Configure Mocha
     mocha.setup('bdd');
     mocha.fullTrace();
+    mocha.asyncOnly();
     mocha.checkLeaks();
     mocha.globals([]);
 <%    if (options.env.node) { -%>
