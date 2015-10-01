@@ -11,6 +11,7 @@ module.exports = {
    * Removes old template files that aren't needed anymore
    */
   remove: function() {
+    this.spawnCommandSync('npm', ['uninstall', '--save-dev', 'jshint']);
     this.fs.delete(this.destinationPath('.jshintignore'));
     this.fs.delete(this.destinationPath('.jshintrc'));
   },
