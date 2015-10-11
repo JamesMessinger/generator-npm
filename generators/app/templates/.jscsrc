@@ -3,9 +3,11 @@
   "excludeFiles":<%- options.keep.excludeFiles %>,
 <% } else { -%>
   "excludeFiles": [
-<% if (options.env.node && options.tests) { -%>
-    "coverage/**",
+<% if (options.tests) { -%>
     "tests/**",
+<% } -%>
+<% if (options.tests && !options.cli) { -%>
+    "coverage/**",
 <% } -%>
 <% if (options.env.browser && !options.env.cordova) { -%>
     "dist/**",

@@ -31,6 +31,9 @@
     "/lib",
     "/www",
 <%    if (options.tests) { -%>
+<%      if (!options.cli) { -%>
+    "/coverage",
+<%      } -%>
     "/dist/*.test.js",
     "/tests",
     "/karma.conf.js",

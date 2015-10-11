@@ -1,6 +1,6 @@
 {
   "name": "<%= project.name %>",
-  "version": "0.0.1",
+  "version": "1.0.0-alpha.0",
   "description": "<%- project.description %>",
 <% if (options.env.yeoman) { -%>
   "keywords": [
@@ -38,13 +38,17 @@
 <% if (options.tests) { -%>
 <%    if (options.env.node) { -%>
     "mocha": "mocha --bail --recursive tests/fixtures tests/specs",
+<%      if (!options.cli) { -%>
     "istanbul": "istanbul cover _mocha --dir coverage/node -- --bail --recursive tests/fixtures tests/specs",
+<%      } -%>
 <%    } -%>
 <%    if (options.env.browser) { -%>
     "karma": "karma start --single-run",
 <%    } -%>
 <%    if (options.env.node && options.env.browser) { -%>
     "test": "npm run browserify -- --test && npm run istanbul && npm run karma",
+<%    } else if (options.env.node && options.cli) { -%>
+    "test": "npm run mocha",
 <%    } else if (options.env.node) { -%>
     "test": "npm run istanbul",
 <%    } else if (options.env.browser) { -%>
@@ -86,19 +90,30 @@
     "phantomjs": "^1.9.0",
 <%    } -%>
 <% } -%>
-<% if (options.env.node && options.tests) { -%>
+<% if (options.env.node && options.tests && !options.cli) { -%>
     "istanbul": "^0.3.13",
 <% } -%>
 <% if (options.tests) { -%>
+<%    if (!options.cli) { -%>
     "coveralls": "^2.11.2",
+<%    } -%>
     "mocha": "^2.2.5",
     "chai": "^3.2.0",
     "sinon": "^1.15.4",
+<% } -%>
+<% if (options.cli) { -%>
+    "spawn-sync": "^1.0.13",
+    "rimraf": "^2.4.3",
 <% } -%>
     "jscs": "^2.2.1",
     "eslint": "^1.5.1",
     "npm-check-updates": "^2.2.4",
     "version-bump-prompt": "^1.1.0"
   },
-  "dependencies": {}
+  "dependencies": {
+<% if (options.cli) { -%>
+    "chalk": "^1.1.1",
+    "commander": "^2.8.1"
+<% } -%>
+  }
 }

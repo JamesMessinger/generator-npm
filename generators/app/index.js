@@ -15,6 +15,7 @@ module.exports = yeoman.Base.extend({
     // Default options
     this.options = this.config.defaults({
       githubUsername: undefined,    // string
+      cli: undefined,               // boolean
       tests: undefined,             // boolean
       es6: undefined,               // boolean
       env: {

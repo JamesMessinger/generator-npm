@@ -6,7 +6,7 @@
 [![Build Status](https://api.travis-ci.org/<%= options.githubUsername %>/<%= project.name %>.svg)](https://travis-ci.org/<%= options.githubUsername %>/<%= project.name %>)
 <% } -%>
 [![Dependencies](https://david-dm.org/<%= options.githubUsername %>/<%= project.name %>.svg)](https://david-dm.org/<%= options.githubUsername %>/<%= project.name %>)
-<% if (options.tests) { -%>
+<% if (options.tests && !options.cli) { -%>
 [![Coverage Status](https://coveralls.io/repos/<%= options.githubUsername %>/<%= project.name %>/badge.svg?branch=master&service=github)](https://coveralls.io/r/<%= options.githubUsername %>/<%= project.name %>)
 <% } -%>
 [![Code Climate Score](https://codeclimate.com/github/<%= options.githubUsername %>/<%= project.name %>/badges/gpa.svg)](https://codeclimate.com/github/<%= options.githubUsername %>/<%= project.name %>)
@@ -128,17 +128,17 @@ To build<%= options.tests ? '/test' : '' %> the project locally on your computer
 `npm run build`
 
 <% if (options.tests) { -%>
-4. **Run the unit tests**<br>
-<% if (options.env.node && options.env.browser) { -%>
+4. **Run the tests**<br>
+<%    if (options.env.node && options.env.browser) { -%>
 `npm run mocha` (test in Node)<br>
 `npm run karma` (test in web browsers)<br>
 `npm test` (test in Node and browsers, and report code coverage)
-<% } else if (options.env.node) { -%>
+<%    } else if (options.env.node && !options.cli) { -%>
 `npm run mocha` (just the tests)<br>
 `npm test` (tests + code coverage)
-<% } else if (options.env.browser) { -%>
+<%    } else { -%>
 `npm test`
-<% } -%>
+<%    } -%>
 <% } -%>
 
 

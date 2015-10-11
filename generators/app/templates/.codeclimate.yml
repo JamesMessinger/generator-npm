@@ -7,7 +7,7 @@ exclude_paths:
 - "node_modules/*"
 <% if (options.tests) { -%>
 - "tests/*"
-<% if (options.env.node) { -%>
+<% if (options.env.node && !options.cli) { -%>
 - "coverage/*"
 <% } -%>
 <% if (options.env.browser) { -%>

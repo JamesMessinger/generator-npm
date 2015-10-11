@@ -14,6 +14,9 @@ module.exports = {
     this.spawnCommandSync('npm', ['uninstall', '--save-dev', 'jshint']);
     this.fs.delete(this.destinationPath('.jshintignore'));
     this.fs.delete(this.destinationPath('.jshintrc'));
+    this.fs.delete(this.destinationPath('tests/_config.js'));
+    this.fs.delete(this.destinationPath('tests/helper.js'));
+    this.fs.delete(this.destinationPath('tests/fixtures/config.js'));
   },
 
   /**
@@ -33,6 +36,13 @@ module.exports = {
       createTemplate.call(this, 'lib/index.js');
     }
 
+    if (this.options.cli) {
+      if (!fs.existsSync(this.destinationPath('bin'))) {
+        // Don't re-create this file if it has been deleted
+        createTemplate.call(this, 'bin/project-name.js', 'bin/' + this.project.name + '.js');
+      }
+    }
+
     if (this.options.tests) {
       if (!fs.existsSync(this.destinationPath('tests/specs'))) {
         // Don't re-create this file if it has been deleted
@@ -41,7 +51,11 @@ module.exports = {
 
       if (!this.options.env.cordova) {
         createTemplate.call(this, '.codeclimate.yml');
-        createTemplate.call(this, 'tests/fixtures/config.js');
+        createTemplate.call(this, 'tests/fixtures/mocha.js');
+      }
+
+      if (this.options.cli) {
+        createTemplate.call(this, 'tests/fixtures/helper.js');
       }
 
       if (this.options.env.browser) {

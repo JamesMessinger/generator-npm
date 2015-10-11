@@ -127,6 +127,13 @@ module.exports = {
           when: function(answers) { return _.contains(answers.env, 'node') && !_.contains(answers.env, 'browser'); }
         },
         {
+          name: 'cli',
+          type: 'confirm',
+          message: 'Is this a CLI tool?:',
+          default: false,
+          when: function(answers) { return _.contains(answers.env, 'node') && !_.contains(answers.env, 'browser'); }
+        },
+        {
           name: 'cordova',
           type: 'confirm',
           message: 'Is this a Cordova app?:',
@@ -149,6 +156,7 @@ module.exports = {
         me.options.env.cordova = me.options.env.cordova || !!answers.cordova;
         me.options.es6 = me.options.es6 || !!answers.es6;
         me.options.tests = me.options.tests || !!answers.tests;
+        me.options.cli = me.options.cli || !!answers.cli;
         me.config.set(me.options);
         done();
       });

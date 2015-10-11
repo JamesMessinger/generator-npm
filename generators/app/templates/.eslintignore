@@ -1,4 +1,4 @@
-<% if (options.env.node && options.tests) { -%>
+<% if (options.tests && !options.cli) { -%>
 coverage
 <% } -%>
 <% if (options.env.browser && !options.env.cordova) { -%>
