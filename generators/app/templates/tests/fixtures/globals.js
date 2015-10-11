@@ -22,7 +22,8 @@
 <% if (options.env.node) { -%>
     window.userAgent = {
       isNode: false,
-      isBrowser: true
+      isBrowser: true,
+      isKarma: !!window.__karma__
     };
   }
   else {
@@ -33,7 +34,8 @@
 
     global.userAgent = {
       isNode: true,
-      isBrowser: false
+      isBrowser: false,
+      isTravisCI: !!process.env.TRAVIS
     };
   }
 <% } -%>
