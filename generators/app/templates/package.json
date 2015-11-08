@@ -26,6 +26,11 @@
 <% } else { -%>
   "main": "lib/index.js",
 <% } -%>
+<% if (options.cli) { -%>
+  "bin": {
+    "<%= project.name %>": "bin/<%= project.name %>.js"
+  },
+<% } -%>
   "scripts": {
     "lint": "eslint lib && jscs lib --verbose",
 <% if (options.env.browser && !options.env.cordova) { -%>
