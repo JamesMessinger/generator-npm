@@ -1,4 +1,4 @@
-/* eslint no-invalid-this:0 */
+/* eslint no-invalid-this:0 complexity:0 */
 'use strict';
 
 var _      = require('lodash'),
