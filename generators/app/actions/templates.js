@@ -82,6 +82,7 @@ module.exports = {
 
     if (this.options.tests) {
       if (!this.options.env.cordova) {
+        overwriteTemplate.call(this, 'appveyor.yml');
         overwriteTemplate.call(this, '.travis.yml');
       }
     }

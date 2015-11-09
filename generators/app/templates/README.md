@@ -4,6 +4,8 @@
 
 <% if (options.tests) { -%>
 [![Build Status](https://api.travis-ci.org/<%= options.githubUsername %>/<%= project.name %>.svg)](https://travis-ci.org/<%= options.githubUsername %>/<%= project.name %>)
+[![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/<%= options.githubUsername %>/<%= project.name %>?svg=true&failingText=Windows%20build%20failing&passingText=Windows%20build%20passing)](https://ci.appveyor.com/project/<%= options.githubUsername %>/<%= project.name %>)
+
 <% } -%>
 [![Dependencies](https://david-dm.org/<%= options.githubUsername %>/<%= project.name %>.svg)](https://david-dm.org/<%= options.githubUsername %>/<%= project.name %>)
 <% if (options.tests && !options.cli) { -%>
