@@ -13,16 +13,16 @@ matrix:
       env: KARMA=false
     - node_js: 0.12
       env: KARMA=false
-    - node_js: iojs
-      env: KARMA=false
     - node_js: 4
+      env: KARMA=false
+    - node_js: 5
       env: KARMA=false
 <% } else if (options.env.node) { -%>
     - node_js: 0.10
     - node_js: 0.11
     - node_js: 0.12
-    - node_js: iojs
     - node_js: 4
+    - node_js: 5
 <% } -%>
 <% if (options.env.browser) { -%>
 
